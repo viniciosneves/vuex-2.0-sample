@@ -5,6 +5,9 @@
 </template>
 
 <script>
+
+import { mapState, mapActions } from 'vuex'
+
 export default {
 
   data () {
@@ -15,11 +18,17 @@ export default {
 
   computed: {
 
-    hasUser () {
+    ...mapState({
 
-      return this.$store.state.user.name !== ''
+      hasUser: state => {
 
-    }
+        const { name } = state.user
+
+        return name !== ''
+
+      }
+
+    })
 
   },
 
@@ -27,18 +36,22 @@ export default {
 
   methods: {
 
+    ...mapActions(['changeUser']),
+
     mudarDados () {
 
       const payload = {
 
         name: 'vinny neves',
         email:'marcos.neves@rgsistemas.com.br',
-        level: 'admin'
+        level: 'admin',
+        city:  'Teresópolis',
+        state: 'RJ'
 
 
       }
 
-      this.$store.commit('CHANGE_USER', payload)
+      this.changeUser(payload)
 
     }
 

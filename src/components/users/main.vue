@@ -1,7 +1,12 @@
 <template>
 
   <div class="">
-    E-mail: {{ email }}
+    <p>
+      E-mail: {{ email }}
+    </p>
+    <p>
+      Endereço: {{ localidade }}
+    </p>
     <br><br>
     <CcButton/>
   </div>
@@ -19,6 +24,10 @@ export default {
 
     email () {
       return this.$store.state.user.email
+    },
+
+    localidade () {
+      return this.$store.getters.localidade
     }
 
   },

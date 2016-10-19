@@ -1,8 +1,10 @@
 export default {
   user: {
-    name: '',
-    email:'',
-    level: ''
+    name:  '',
+    email: '',
+    level: '',
+    city:  '',
+    state: ''
   },
   token: ''
 }
