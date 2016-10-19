@@ -2,6 +2,8 @@
 
 import CcUsers from './components/users/main.vue'
 
+import { mapState } from 'vuex'
+
 export default {
 
   name: 'app',
@@ -16,14 +18,13 @@ export default {
 
       level: 'usuário-raso'
 
-
     }
 
     setTimeout(() => {
 
       this.$store.commit('CHANGE_USER', payload)
 
-    },1500)
+    },3000)
 
   },
 
@@ -33,13 +34,17 @@ export default {
 
   computed: {
 
-    user () {
+    ...mapState({
 
-      const { name, email } = this.$store.state.user
+      user: state => {
 
-      return `Usuário logado: ${name} | E-mail: ${email}`
+        const { name, email } = state.user
 
-    }
+        return `Usuário logado: ${name} | E-mail: ${email}`
+        
+      }
+
+    })
 
   }
 
@@ -49,7 +54,7 @@ export default {
 <template>
   <div id="app">
 
-    <h1>Some awesome text</h1>
+    <h1>Some vuex stuff</h1>
 
     <h4>{{ user }}</h4>
 

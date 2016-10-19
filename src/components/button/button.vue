@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <button type="button" name="button" @click="mudarDados">Mudar dados do usuário</button>
+    <button :disabled="!hasUser" type="button" name="button" @click="mudarDados">Mudar dados do usuário</button>
   </div>
 </template>
 
@@ -13,7 +13,15 @@ export default {
 
   },
 
-  computed: {},
+  computed: {
+
+    hasUser () {
+
+      return this.$store.state.user.name !== ''
+
+    }
+
+  },
 
   mounted () {},
 
